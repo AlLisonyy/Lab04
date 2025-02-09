@@ -20,33 +20,50 @@ states <- read_csv("data/states.csv")
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+```{r descriptives Dennys dataset}
+print(dennys)
+```
+
+There are `r nrow(dennys)` observations and `r ncol(dennys)` variables in the dataset. Each row in the dennys dataset represents a Denny's restaurant at different places. Each column represents one type of information about the location of the store, including the state, the city, the store specific location, ZIP code, the longitude, and latitude. 
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 2 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+```{r descriptives La Quintas dataset}
+print(laquinta)
+```
+
+There are `r nrow(laquinta)` observations and `r ncol(laquinta)` variables in this dataset. Each row in the La Quinta's dataset represents a La Quinta hotel at different places. Each column represents one type of information about the location of the store, including the state, the city, the store specific location, ZIP code, the longitude, and latitude. 
+
 
 ### Exercise 3
 
-...
+On the website of Denny's it shows that the restaurant is opened in 15 countries besides USA, including: Canada, Puerto Rico, Guam, Mexico, Honduras, Costa Rica, Guatemala, El Salvador, The Philippines, Indonesia, New Zealand, The United Arab Emirates, The United Kingdom, Japan. For La Quinta's, the hotel is opened in 9 countries besides USA, including: Ecuador, Colombia, Chile, United Arab Emirates, Turkey, New Zealand, China, Mexico, Canada. 
 
 ### Exercise 4
 
-...
+if possible, we can create a new variable and filter the original state column into the new variable. The state abbreviations for the 50 states will be filtered as "US", while any other labels will be "others". In this way we can know how many of the stores are outside USA.    
 
 ### Exercise 5
 
-...
+```{r filter countries outside US}
+dn <- dennys %>% 
+  filter(!(state %in% states$abbreviation))
+
+lq <- laquinta %>% 
+  filter(!(state %in% states$abbreviation))
+```
+
+For Denny's, it appears that the dataset did not include any store that is outside of the US. 
 
 ### Exercise 6
 
-...
+```{r new variables for dennys}
+dennys %>%
+  mutate(country = "United States")
+
+print(dn)
+```
+
 
  
 Add exercise headings as needed.
