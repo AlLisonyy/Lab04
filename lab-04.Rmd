@@ -48,9 +48,6 @@ if possible, we can create a new variable and filter the original state column i
 ```{r filter countries outside US}
 dn <- dennys %>% 
   filter(!(state %in% states$abbreviation))
-
-lq <- laquinta %>% 
-  filter(!(state %in% states$abbreviation))
 ```
 
 For Denny's, it appears that the dataset did not include any store that is outside of the US. 
@@ -64,7 +61,50 @@ dennys %>%
 print(dn)
 ```
 
+### Exercise 7
 
- 
-Add exercise headings as needed.
+```{r laquinta countries outside the US}
+lq <- laquinta %>% 
+  filter(!(state %in% states$abbreviation))
+print(lq)
+```
+
+According to the dataset, there are 14 stores outside of the US. According to the websites, the hotel is opened in 9 countries besides USA, including: Ecuador, Colombia, Chile, United Arab Emirates, Turkey, New Zealand, China, Mexico, Canada. 
+
+### Exercise 8
+
+```{r country variable}
+laquinta <- laquinta %>%
+  mutate(country = case_when(
+    state %in% state.abb ~ "United States",
+    state %in% c("ON", "BC") ~ "Canada",
+    state == "ANT" ~ "Colombia",
+    state %in% c("AG", "QR", "CH", "NL", "VE", "PU", "SL") ~ "Mexico",
+    state == "FM" ~ "Honduras"
+  ))
+
+lqf <- laquinta %>%
+  filter(country == "United States")
+```
+
+### Exercise 9
+
+```{r how many stores}
+dn %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation"))
+
+lqf %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation"))
+```
+Based on the dataset, California has the most Dennys' stores (n = 403) and Delaware has the least store (n = 1). This is not surprising since Dennys started in California.
+As for La Quinta hotel, Texas has the most La Quinta hotels (n = 237) and Maine has the least hotel (n = 1). The internet said that La Quinta started in Texas. 
+
+### Exercise 10
+
+```{r}
+
+```
+
 
