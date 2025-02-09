@@ -118,4 +118,44 @@ ggplot(dn_lq, mapping = aes(
   geom_point()
 ```
 
+### Exercise 11
 
+```{r NC location relationship between Dennys and La Quinta}
+dn_lq_nc <- dn_lq %>%
+  filter(state == "NC")
+  
+ggplot(dn_lq_nc, mapping = aes(
+  x = longitude,
+  y = latitude,
+  color = establishment
+)) +
+  geom_point(alpha = .5) +
+  labs(
+    title= "North Carolina Denny's and La Quinta Locations",
+    x = "Longitude", 
+    y = "Latitude"
+    )
+```
+
+According to the graph, it appears that most of the La Quinta hotels have at least one Denny's restaurant nearby. Therefore I agree with the joke.
+
+### Exercise 11
+
+```{r TX location relationship between Dennys and La Quinta}
+dn_lq_tx <- dn_lq %>%
+  filter(state == "TX")
+  
+ggplot(dn_lq_tx, mapping = aes(
+  x = longitude,
+  y = latitude,
+  color = establishment
+)) +
+  geom_point(alpha = .4) +
+  labs(
+    title= "Texas Denny's and La Quinta Locations",
+    x = "Longitude", 
+    y = "Latitude"
+    )
+```
+
+According to the graph, it appears that most of the La Quinta hotels have at least one Denny's restaurant nearby in Texas. However, since there is more La Quinta hotels than Denny's, the joke is less supported. 
