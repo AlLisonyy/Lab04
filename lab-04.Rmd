@@ -103,8 +103,19 @@ As for La Quinta hotel, Texas has the most La Quinta hotels (n = 237) and Maine 
 
 ### Exercise 10
 
-```{r}
+```{r establishment}
+dn <- dn %>%
+  mutate(establishment = "Denny's")
+lqf <- lqf %>%
+  mutate(establishment = "La Quinta")
+dn_lq <- bind_rows(dn, lqf)
 
+ggplot(dn_lq, mapping = aes(
+  x = longitude,
+  y = latitude,
+  color = establishment
+)) +
+  geom_point()
 ```
 
 
