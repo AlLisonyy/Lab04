@@ -2,9 +2,7 @@
 title: "Lab 04 - Visualizing spatial data"
 author: "Allison"
 output: 
-  html_document: 
-    toc: yes
-    toc_float: yes
+    github_document
 ---
 
 ### Load packages and data
