@@ -1,8 +1,10 @@
 ---
 title: "Lab 04 - Visualizing spatial data"
 author: "Allison"
-date: "02052025"
-output: github_document
+output: 
+  html_document: 
+    toc: yes
+    toc_float: yes
 ---
 
 ### Load packages and data
